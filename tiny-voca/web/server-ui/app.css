@@ -1,0 +1,195 @@
+:root {
+  color-scheme: light;
+  --paper: #f5f3ee;
+  --panel: #fffefa;
+  --ink: #20231f;
+  --muted: #777b73;
+  --line: #e6e5de;
+  --accent: #477a66;
+  --accent-dark: #315e4d;
+  --accent-wash: #edf4ef;
+  --error: #a33f35;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, #fffdf6 0, transparent 54rem),
+    var(--paper);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+button, textarea { font: inherit; }
+button:focus-visible, a:focus-visible, textarea:focus-visible, input:focus-visible + .voice-card {
+  outline: 3px solid #7ba893;
+  outline-offset: 3px;
+}
+
+.shell { width: min(100% - 40px, 760px); margin: 0 auto; }
+.topbar {
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(32 35 31 / 8%);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  font-size: 17px;
+}
+
+.brand-mark { display: flex; align-items: center; gap: 3px; height: 22px; }
+.brand-mark i { display: block; width: 3px; border-radius: 3px; background: var(--accent); }
+.brand-mark i:nth-child(1), .brand-mark i:nth-child(5) { height: 8px; }
+.brand-mark i:nth-child(2), .brand-mark i:nth-child(4) { height: 16px; }
+.brand-mark i:nth-child(3) { height: 22px; }
+
+.server-status { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
+.server-status i { width: 7px; height: 7px; border-radius: 50%; background: #d3a842; }
+.server-status.ready i { background: #4a9a69; box-shadow: 0 0 0 3px rgb(74 154 105 / 12%); }
+.server-status.error i { background: var(--error); }
+
+.intro { padding: 58px 0 32px; }
+.eyebrow { margin: 0 0 14px; color: var(--accent); font-weight: 700; font-size: 11px; letter-spacing: .14em; }
+h1 {
+  margin: 0;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(42px, 8vw, 62px);
+  font-weight: 600;
+  letter-spacing: -.065em;
+  line-height: 1.08;
+}
+.lede { max-width: 490px; margin: 18px 0 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
+
+.workspace {
+  padding: 24px;
+  border: 1px solid #e8e7df;
+  border-radius: 16px;
+  background: var(--panel);
+  box-shadow: 0 18px 48px rgb(48 49 40 / 5%), 0 2px 6px rgb(48 49 40 / 3%);
+}
+
+.field-label { display: block; color: #555b53; font-size: 12px; font-weight: 700; letter-spacing: .02em; }
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 148px;
+  margin-top: 12px;
+  padding: 0;
+  resize: vertical;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.7;
+}
+textarea::placeholder { color: #b0b3aa; }
+
+.text-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 34px; }
+.examples { display: flex; flex-wrap: wrap; gap: 8px; }
+.examples button {
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 11px;
+}
+.examples button:hover { border-color: #b9c9bf; color: var(--accent-dark); }
+#character-count { flex: 0 0 auto; color: #999d94; font-size: 11px; }
+
+.divider { height: 1px; margin: 18px 0 20px; background: var(--line); }
+.controls { display: flex; align-items: end; justify-content: space-between; gap: 20px; }
+.voice-picker { display: flex; gap: 9px; margin: 0; padding: 0; border: 0; }
+.voice-picker legend { width: 100%; margin-bottom: 9px; }
+.voice-option { position: relative; display: block; cursor: pointer; }
+.voice-option input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.voice-card {
+  display: flex;
+  min-width: 136px;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+  transition: border-color .15s, background .15s;
+}
+.voice-option input:checked + .voice-card { border-color: #8eb3a0; background: var(--accent-wash); }
+.voice-option input:focus-visible + .voice-card { outline: 3px solid #7ba893; outline-offset: 3px; }
+.voice-name { font-size: 13px; font-weight: 700; }
+.voice-description { color: var(--muted); font-size: 10px; }
+
+.speak-button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background .15s, transform .15s;
+}
+.speak-button:hover:not(:disabled) { transform: translateY(-1px); background: var(--accent-dark); }
+.speak-button:disabled { cursor: not-allowed; opacity: .48; }
+.button-icon { font-size: 10px; }
+.speak-button.loading .button-icon { animation: pulse 1s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .35; } }
+
+.message { min-height: 22px; margin: 14px 0 0; color: var(--muted); font-size: 12px; }
+.message.error { color: var(--error); }
+.result { margin-top: 16px; padding-top: 18px; border-top: 1px solid var(--line); }
+.result[hidden] { display: none; }
+.result-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.download-link { color: var(--accent-dark); text-decoration: none; font-size: 12px; font-weight: 600; }
+.download-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+audio { display: block; width: 100%; height: 42px; }
+
+footer {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 24px 2px 42px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.footer-mark { color: var(--accent); font-size: 18px; }
+
+@media (max-width: 540px) {
+  .shell { width: min(100% - 28px, 760px); }
+  .topbar { height: 68px; }
+  .intro { padding-top: 42px; }
+  .lede { font-size: 14px; }
+  .workspace { padding: 18px; border-radius: 13px; }
+  .text-meta { align-items: flex-start; }
+  #character-count { padding-top: 6px; }
+  .controls { align-items: stretch; flex-direction: column; gap: 16px; }
+  .voice-picker { flex-wrap: wrap; }
+  .voice-picker legend { flex-basis: 100%; }
+  .voice-option { flex: 1; }
+  .voice-card { min-width: 0; }
+  .speak-button { width: 100%; }
+  footer { align-items: flex-start; }
+}

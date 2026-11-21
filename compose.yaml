@@ -1,0 +1,16 @@
+services:
+  tiny-voca:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tiny-voca:local
+    restart: unless-stopped
+    init: true
+    ports:
+      - "${HOST_PORT:-8000}:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=2)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 120s

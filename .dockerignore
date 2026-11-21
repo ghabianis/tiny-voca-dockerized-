@@ -1,0 +1,13 @@
+**
+!tiny-voca/
+!tiny-voca/pyproject.toml
+!tiny-voca/README.md
+!tiny-voca/src/
+!tiny-voca/src/**
+!tiny-voca/weights/
+!tiny-voca/weights/tiny-voca.pt
+!tiny-voca/weights/phonemizer/
+!tiny-voca/weights/phonemizer/**
+!tiny-voca/web/
+!tiny-voca/web/server-ui/
+!tiny-voca/web/server-ui/**
